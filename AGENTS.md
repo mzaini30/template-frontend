@@ -1,7 +1,7 @@
 VARIABLE
 
 $whatsapp = bZYMoXDsIyjUVgognpKrdYylgwKzAOCHgHFjbdLeOJwosdtjAv000
-$pakasir = bayar
+$pakasir = untuk-tes
 
 SKILLS
 
