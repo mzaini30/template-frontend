@@ -25,7 +25,7 @@ FRONTEND
 WHATSAPP
 
 - Untuk komunikasi dengan WhatsApp menggunakan Sidobe yang docsnya berada di knowledge/sidobe.txt
-- API keynya adalah bZYMoXDsIyjUVgognpKrdYylgwKzAOCHgHFjbdLeOJwosdtjAv000
+- API keynya adalah bZYMoXDsIyjUVgognpKrdYylgwKzAOCHgHFjbdLeOJwosdtjAv
 - Untuk nomor WhatsApp berformat 081234567890 akan secara otomatis diubah menjadi format +6281545143654
 
 PUTER
