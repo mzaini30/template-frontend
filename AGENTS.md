@@ -43,13 +43,20 @@ WHATSAPP
 PUTER
 
 - Di bawah ini kesemuanya menggunakan fitur Puter
+- Untuk fitur selengkapnya bisa didapatkan di ./knowledge/puter.txt
 
-GETTING STARTED
+CONTOH
 
-import { init, getAuthToken } from "@heyputer/puter.js/src/init.cjs";
+<!-- MyComponent.svelte -->
+<script>
+import puter from "@heyputer/puter.js";
 
-const authToken = await getAuthToken(); // performs browser based auth
-const puter = init(authToken);
+function handleClick() {
+    puter.ai.chat("hello");
+}
+</script>
+
+<button on:click={handleClick}>Chat</button>
 
 AI
 
