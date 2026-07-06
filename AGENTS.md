@@ -1,8 +1,3 @@
-VARIABLE
-
-$whatsapp = bZYMoXDsIyjUVgognpKrdYylgwKzAOCHgHFjbdLeOJwosdtjAv000
-$pakasir = untuk-tes
-
 SKILLS
 
 - Selalu gunakan skill caveman
@@ -27,16 +22,10 @@ FRONTEND
 - Untuk tampilan, gunakan file DESIGN.md
 - Untuk kompresi gambar, menggunakan bantuan i0.wp.com. Untuk docsnya, bisa ditemukan di ./knowledge/i0.txt
 
-PEMBAYARAN
-
-- Untuk pembayaran, gunakan Pakasir
-- Docsnya ada di knowledge/pakasir.txt
-- Slug Pakasir yang digunakan adalah $pakasir
-
 WHATSAPP
 
 - Untuk komunikasi dengan WhatsApp menggunakan Sidobe yang docsnya berada di knowledge/sidobe.txt
-- API keynya adalah $whatsapp
+- API keynya adalah bZYMoXDsIyjUVgognpKrdYylgwKzAOCHgHFjbdLeOJwosdtjAv000
 - Untuk nomor WhatsApp berformat 081234567890 akan secara otomatis diubah menjadi format +6281545143654
 
 PUTER
