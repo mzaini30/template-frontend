@@ -46,7 +46,7 @@ function handleClick() {
 
 <button on:click={handleClick}>Chat</button>
 
-AI
+AI GATEWAY
 
 puter.ai.chat("Explain AI like I'm five!");
 
@@ -78,140 +78,44 @@ await puter.fs.mkdir('my-folder');
 // List files in a directory
 const files = await puter.fs.readdir('my-folder');
 
-IMAGE GENERATION
+AUTH
 
-// Generate an image with the default model
-const img = await puter.ai.txt2img("A sunset over mountains");
-document.body.appendChild(img);
+// Sign in when the user clicks your button
+document.getElementById("sign-in").addEventListener("click", async () => {
+    await puter.auth.signIn();
 
-// Use GPT-Image
-const gpt = await puter.ai.txt2img("A futuristic city", {
-    model: "gpt-image-1.5",
+    // Now you know who they are
+    const user = await puter.auth.getUser();
+    puter.print(`Welcome, ${user.username}!`);
+
+    // Saved to their account, scoped to your app
+    await puter.kv.set("visits", 1);
 });
 
-// Use Nano Banana
-const banana = await puter.ai.txt2img("A peaceful garden", {
-    model: "gemini-3-pro-image"
+// Check auth status any time, no await needed
+if (puter.auth.isSignedIn()) {
+    puter.print("This user is already signed in.");
+}
+
+// End the session
+// puter.auth.signOut();
+
+PEER
+
+// Host: start a peer server and share the invite code
+const server = await puter.peer.serve();
+console.log(`Invite code: ${server.inviteCode}`);
+
+server.addEventListener("connection", (event) => {
+    const conn = event.conn;
+    conn.addEventListener("open", () => conn.send("Hello from the host!"));
+    conn.addEventListener("message", (msg) => console.log("Peer says:", msg.data));
 });
 
-VIDEO GENERATION
-
-// Generate a video with test mode (no credits used)
-const video = await puter.ai.txt2vid(
-    "A sunrise drone shot flying over a calm ocean",
-    true // test mode
-);
-document.body.appendChild(video);
-
-// Generate a clip with Sora
-const sora = await puter.ai.txt2vid(
-    "A fox sprinting through a snow-covered forest at dusk", {
-        model: "sora-2",
-    }
-);
-
-// Use Google Veo
-const veo = await puter.ai.txt2vid("A peaceful garden", {
-    model: "veo-3.0-fast"
-});
-
-OCR
-
-// Basic text extraction from an image URL
-const text = await puter.ai.img2txt(
-    "https://assets.puter.site/letter.png"
-);
-console.log(text);
-
-// Extract text from an uploaded file
-const fileInput = document.querySelector('input[type="file"]');
-const file = fileInput.files[0];
-const result = await puter.ai.img2txt(file);
-
-// Use Mistral OCR provider
-const extracted = await puter.ai.img2txt(imageUrl, {
-    provider: "mistral"
-});
-
-// Process specific pages of a PDF
-const pdfText = await puter.ai.img2txt(pdfFile, {
-    provider: "aws-textract",
-    pages: [1, 2, 3]
-});
-
-// Test mode for development
-const sample = await puter.ai.img2txt(imageUrl, {
-    testMode: true
-});
-
-TEXT TO SPEECH
-
-// Basic text to speech with default settings
-const audio = await puter.ai.txt2speech("Hello, world!");
-audio.play();
-
-// Use neural engine for higher quality
-const neural = await puter.ai.txt2speech("Welcome to Puter!", {
-    voice: "Joanna",
-    engine: "neural"
-});
-
-// Use OpenAI TTS
-const openai = await puter.ai.txt2speech("This is OpenAI TTS.", {
-    provider: "openai",
-    model: "tts-1-hd",
-    voice: "nova"
-});
-
-// Use ElevenLabs for premium voices
-const elevenlabs = await puter.ai.txt2speech("Premium voice quality.", {
-    provider: "elevenlabs",
-    model: "eleven_multilingual_v2"
-});
-
-SPEECH TO TEXT
-
-// Basic speech to text transcription
-const text = await puter.ai.speech2txt(audioFile);
-console.log(text);
-
-// Transcribe from a URL
-const result = await puter.ai.speech2txt(
-    "https://example.com/audio.mp3"
-);
-
-// Use GPT-4o for higher accuracy
-const transcript = await puter.ai.speech2txt(audioFile, {
-    model: "gpt-4o-transcribe"
-});
-
-// Speaker diarization - identify who said what
-const diarized = await puter.ai.speech2txt(audioFile, {
-    model: "gpt-4o-transcribe-diarize",
-    response_format: "diarized_json"
-});
-
-// Generate SRT subtitles
-const subtitles = await puter.ai.speech2txt(audioFile, {
-    response_format: "srt"
-});
-
-VOICE CHANGER
-
-// Convert voice from a file path
-const audio = await puter.ai.speech2speech("~/recordings/voice.wav");
-audio.play();
-
-// Convert voice with a specific voice ID
-const converted = await puter.ai.speech2speech(audioFile, {
-    voice: '21m00Tcm4TlvDq8ikWAM', // Rachel sample voice
-});
-
-// Convert from a Blob or File object
-const blob = await recorder.stop();
-const result = await puter.ai.speech2speech(blob, {
-    remove_background_noise: true,
-});
+// Client: connect using the invite code
+const conn = await puter.peer.connect(inviteCode);
+conn.addEventListener("open", () => conn.send("Hello from the client!"));
+conn.addEventListener("message", (msg) => console.log("Host says:", msg.data));
 
 NETWORKING
 
