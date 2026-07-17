@@ -1,3 +1,9 @@
+FITUR PREMIUM
+
+- Ketika ada fitur-fitur yang bagus di website, jadikan dia fitur premium
+- Fitur premium ini bisa diakses hanya jika ada data ini di localStorage.lisensi : iahsdaslkuyioamdfklayiwojaklshjdfljahiowfjalkshjdilaiofnalksdjklgfaslkdjfalksr8oiawjlkfalksdjalkhskofajskldfjalksjdflkajsdlkfjaiowfjnmlkasjdflkajslkdfjalksjfklajlkfjaslkf
+- Jika tidak ada teks tersebut di localStorage.lisensi, maka kasih tau user bahwa bisa mendapatkan lisensinya di https://lynk.id/zenhacker/123 (harga 30 ribu rupiah), terus, ada form untuk memasukkan teks lisensinya yang nantinya akan disimpan di localStorage.lisensi
+
 SKILLS
 
 - Selalu gunakan skill caveman
