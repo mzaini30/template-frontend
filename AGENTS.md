@@ -37,6 +37,7 @@ WHATSAPP
 PUTER
 
 - Di bawah ini kesemuanya menggunakan fitur Puter
+- PENTING : Harus ada tombol login dan logout Puter di website
 - Untuk fitur selengkapnya bisa didapatkan di ./knowledge/puter.txt
 
 CONTOH
